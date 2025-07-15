@@ -1,5 +1,7 @@
 fastapi
 uvicorn[standard]
+python-jose[cryptography]
+requests
 openai
 pydantic
 python-dotenv

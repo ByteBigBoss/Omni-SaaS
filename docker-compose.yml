@@ -1,11 +1,21 @@
 version: "3.8"
 
 services:
-  frontend:
+  landing:
+    build:
+      context: ./apps/landing
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+  
+  web:
     build:
       context: ./apps/web
     ports:
-      - "3000:3000"
+      - "3001:3001"
     environment:
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
