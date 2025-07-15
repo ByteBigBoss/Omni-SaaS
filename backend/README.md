@@ -1,5 +1,5 @@
 
-# 🧠 FastAPI Backend Template
+# 🧠 Omni-SaaS FastAPI Backend Template
 
 This FastAPI template is for boostrap your next FastAPI project faster with few clicks.
 
