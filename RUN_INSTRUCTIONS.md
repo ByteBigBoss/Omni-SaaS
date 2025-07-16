@@ -1,3 +1,5 @@
+Here's the updated `RUN_INSTRUCTIONS.md` with both script-based and manual run instructions:
+
 # 🚀 Running the Monorepo Locally
 
 This monorepo contains:
@@ -6,7 +8,7 @@ This monorepo contains:
 ✅ **Expo mobile app** (`apps/mobile`)
 ✅ **FastAPI backend** (`backend/`)
 
-Each service has its own run script.
+You can run services either using convenience scripts or manually.
 
 ---
 
@@ -26,117 +28,104 @@ Before running, ensure you have installed:
 
 ---
 
-## ✅ 2. Make Run Scripts Executable (First Time Only)
+## ✅ 2. Running Services (Script Method - Recommended)
 
-Run this once in the project root:
+You need **3 terminal tabs** (or windows) for full development.
 
+### 🛠 Make Run Scripts Executable (First Time Only)
 ```bash
-chmod +x run-apps.sh run-mobile.sh run-backend.sh
+chmod +x run-apps.sh run-mobile.sh && cd backend && chmod +x run-backend.sh && cd ..
 ```
 
 > ✅ If you cloned after the scripts were committed with `+x`, you can skip this.
 
 ---
 
-## ✅ 3. Running Services
-
-You need **3 terminal tabs** (or windows) for full development.
-
----
-
 ### 🖥 Run Next.js Apps (Web/Admin/Landing)
-
 ```bash
 ./run-apps.sh
 ```
+**What it does:**
+1. Runs `pnpm install` (workspace-aware)
+2. Starts all Next.js apps using Turbopack
 
-This will:
-
-1. Run `pnpm install` (workspace-aware)
-2. Start all Next.js apps using Turbopack
-
-Runs on:
-
-* **Web** → [http://localhost:3000](http://localhost:3000)
-* **Admin** → [http://localhost:3001](http://localhost:3001)
-* **Landing** → [http://localhost:3002](http://localhost:3002)
-
----
+**Access at:**
+- **Web** → [http://localhost:3000](http://localhost:3000)
+- **Admin** → [http://localhost:3001](http://localhost:3001)
+- **Landing** → [http://localhost:3002](http://localhost:3002)
 
 ### 📱 Run Expo Mobile App
-
 ```bash
 ./run-mobile.sh
 ```
-
-This will:
-
-1. Run `pnpm install`
-2. Start the **Expo DevTools**
-
-Runs on:
-
-* **Expo DevTools** → [http://localhost:19002](http://localhost:19002)
-
-Scan the QR code to open in **Expo Go** on your phone.
-
----
+**Access at:**
+- **Expo DevTools** → [http://localhost:19002](http://localhost:19002)
 
 ### 🔧 Run Backend (FastAPI)
-
 ```bash
-cd backend
-./run-backend.sh
+cd backend && ./run-backend.sh
 ```
-
-Runs on:
-
-* **FastAPI backend** → [http://localhost:8000](http://localhost:8000)
+**Access at:**
+- **FastAPI** → [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## ✅ 4. Alternative: Run Everything in Docker
+## ✅ 3. Running Services (Manual Method)
 
-If you want to run all services in Docker:
+### 🖥 Manual Next.js Setup
+```bash
+pnpm install
+cd apps/web && pnpm dev & 
+cd apps/admin && pnpm dev & 
+cd apps/landing && pnpm dev
+```
 
+### 📱 Manual Expo Setup
+```bash
+cd apps/mobile
+pnpm install
+pnpm start
+```
+
+### 🔧 Manual Backend Setup
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# OR venv\Scripts\activate (Windows)
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+---
+
+## ✅ 4. Docker Alternative
+
+Run all services in containers:
 ```bash
 docker compose up --build
 ```
-
-This will start:
-
-* Next.js apps
-* Expo
-* Backend
 
 ---
 
 ## ✅ 5. Common Issues
 
-* **Windows cannot run `.sh` scripts?**
-
-  * Use **Git Bash** or **WSL**.
-  * Or manually copy the commands inside the script and run them.
-
-* **Lockfile warnings?**
-
-  * Delete `node_modules` and `.pnpm-store`, then:
-
-    ```bash
-    pnpm install
-    ```
-
-* **Expo can’t find project?**
-
-  * Make sure `apps/mobile/package.json` exists and has a valid `name`.
-  * We use `pnpm --filter ./apps/mobile start` to avoid mismatches.
+* **Windows script issues?**
+  - Use Git Bash/WSL or run commands manually
+* **Lockfile problems?**
+  ```bash
+  rm -rf node_modules .pnpm-store
+  pnpm install
+  ```
+* **Expo project not found?**
+  - Verify `apps/mobile/package.json` exists
 
 ---
 
-## ✅ 6. Typical Workflow
+## ✅ 6. Recommended Workflow
 
-1️⃣ Open **Terminal 1** → `./run-apps.sh`
-2️⃣ Open **Terminal 2** → `./run-mobile.sh`
-3️⃣ Open **Terminal 3** → `cd backend ./run-backend.sh`
+1️⃣ Terminal 1: `./run-apps.sh` (or manual Next.js)  
+2️⃣ Terminal 2: `./run-mobile.sh` (or manual Expo)  
+3️⃣ Terminal 3: `cd backend && ./run-backend.sh` (or manual FastAPI)  
 
-Now you have **All Next.js apps + Expo Mobile App + FastAPI Backend running locally**.
+Now you have **All Next.js apps + Expo Mobile App + FastAPI Backend running locally**. 🎉
