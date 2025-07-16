@@ -1,7 +1,3 @@
-Here’s a **clean `RUN_INSTRUCTIONS.md`** for your project, covering **Next.js apps, Expo mobile, and FastAPI backend** with the new `run-*.sh` scripts.
-
----
-
 # 🚀 Running the Monorepo Locally
 
 This monorepo contains:
