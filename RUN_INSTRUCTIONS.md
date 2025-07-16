@@ -1,5 +1,3 @@
-Here's the updated `RUN_INSTRUCTIONS.md` with both script-based and manual run instructions:
-
 # 🚀 Running the Monorepo Locally
 
 This monorepo contains:
