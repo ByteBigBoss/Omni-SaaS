@@ -3,7 +3,8 @@ uvicorn[standard]
 python-jose[cryptography]
 requests
 openai
-pydantic
 python-dotenv
 stripe
 httpx
+pydantic>=2.0
+pydantic-settings>=2.0

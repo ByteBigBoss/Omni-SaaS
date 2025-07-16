@@ -16,6 +16,6 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to SaaS Starter Backend"}
+    return {"message": "Welcome to Omni-SaaS — AI SaaS Starter Backend"}
 
 app.include_router(api_router, prefix="/api/v1", dependencies=[Depends(verify_supabase_token)])

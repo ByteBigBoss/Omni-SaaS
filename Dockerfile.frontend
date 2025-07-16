@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install pnpm globally
+RUN npm install -g pnpm
+
+# Copy manifests first for better caching
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
+
+# Copy full monorepo
+COPY . .
+
+# Install all workspace dependencies
+RUN pnpm install
+
+# Default command overridden by docker-compose
+CMD ["pnpm", "dev"]
