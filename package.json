@@ -18,5 +18,14 @@
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "core-js-pure",
+      "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }

@@ -22,11 +22,15 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@tailwindcss/postcss": "^4.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@workspace/eslint-config": "workspace:^",
     "@workspace/typescript-config": "workspace:*",
+    "class-variance-authority": "^0.7.1",
     "typescript": "^5.7.3"
   }
 }

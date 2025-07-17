@@ -101,7 +101,7 @@ uvicorn main:app --reload
 
 Run all services in containers:
 ```bash
-docker compose up --build
+docker-compose up --build
 ```
 
 ---
